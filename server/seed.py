@@ -3,7 +3,7 @@
 from random import randint, choice, sample
 from faker import Faker
 from app import app, db
-from models import Player, Team, Coach, player_coach_association
+from models import Player, Team, Coach, player_coach_association, Match
 
 fake = Faker()
 
@@ -12,6 +12,7 @@ def delete_tables():
     Team.query.delete()
     Player.query.delete()
     Coach.query.delete()
+    Match.query.delete()
     db.session.execute(player_coach_association.delete())
     db.session.commit()
 
@@ -71,9 +72,31 @@ def player_coach_table():
 
     db.session.commit()
 
+def create_matches():
+    print('Creating matches')
+    teams=Team.query.all()
+    matches=[]
+    for i in range(10):
+        home_team=choice(teams)
+        away_team=choice(teams)
+        
+        while home_team == away_team:
+            away_team=choice(teams)
+        
+        match=Match(
+            date=fake.date(),
+            home_team_id= home_team.id,
+            away_team_id= away_team.id
+        )
+        matches.append(match)
+
+    db.session.add_all(matches)
+    db.session.commit() 
+
 if __name__ == '__main__':
     with app.app_context():
         delete_tables()
         create_teams()
         create_coaches_and_players()
+        create_matches()
         player_coach_table()
