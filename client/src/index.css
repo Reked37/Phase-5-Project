@@ -1,0 +1,128 @@
+:root {
+  --bg: #282c34;
+  --header: #fff;
+  --link: #61dafb;
+  --text: hsla(0, 0%, 100%, 0.88);
+}
+
+.navbar{
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  top:0;
+  width:100%;
+  font-size:20px
+}
+.navbar a{
+  color:rgb(85, 30, 136);
+  float:left;
+  padding:10px 30px;
+  display:block;
+  background:green;
+}
+
+.navbar a:hover{
+  background-color: rgb(44, 182, 74);
+}
+.navbar a.active{
+  background-color: rgb(44, 182, 74);
+}
+
+.error{
+  color: red;
+  font-size: 20px;
+  margin-left:5px;
+  padding: 10px 0px;
+}
+
+.ui-card{
+  background: beige;
+  height:auto;
+  width:auto;
+}
+
+body{
+  background: lightcyan;
+  margin: 0;
+  padding:0;
+}
+
+.headers{
+  font-family: Cosmic-sans;
+  text-align: center;
+  font-size: 50px;
+}
+
+.name{
+  color:red;
+  text-align: center;
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.description{
+  color:rgb(44, 182, 74);
+  text-align: center;
+  font-size:20px
+}
+
+.meta{
+  color:rgb(33, 10, 243);
+  text-align: center;
+  font-size:18px
+}
+
+.number{
+  text-align: center;
+  font-size:22px;
+}
+
+.form{
+  text-align:center;
+}
+
+.paragraph{
+  text-align:center;
+  font-size: 27px;
+  font-family:comisc sans;
+  text-wrap: wrap;
+  background-color: aqua;
+}
+
+.home-header{
+  text-align: center;
+  font-size: 50px;
+}
+
+.small-image{
+  width: 500px;
+  height:auto;
+  margin-left:auto;
+  margin-right: auto;
+  display:block;
+}
+
+.label{
+  font-size: 23px;
+}
+
+.field{
+  margin:8px 0px;
+  font-size:20px;
+}
+
+.side-image{
+  float:right;
+  width:500px;
+  display:flex;
+}
+
+.ui.green.button{
+  width:150px;
+  height: 45px;
+}
+
+.ui.pink.button{
+  align-items: center;
+  justify-content: center;
+}
