@@ -13,12 +13,17 @@ function Team({passTeam}){
         navigate(`/teamcoaches/${passTeam.id}`)
     }
 
+    function updateTeam(){
+        navigate(`/updateteam/${passTeam.id}`)
+    }
+
     return (
         <div class='ui five wide column'>
             <div class='ui-card'>
                 <div class='content'>
                     <h3 class='name'>Team Name: {name}</h3>
                     <h3 class='description'>Mascot: {mascot}</h3>
+                    <button type='submit' onClick={updateTeam} className='ui  blue button'>Update Team</button>
                     <button className='ui purple button' type='submit' onClick={teamPlayers}>Players</button>
                     <button className='ui pink button' type='submit' onClick={teamCoaches}>Coaches</button>
                 </div>

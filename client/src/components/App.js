@@ -12,6 +12,8 @@ import ShowCoachesPlayers from "./CoachesPlayers";
 import ShowTeamCoaches from "./TeamCoaches";
 import ShowTeamPlayers from "./TeamPlayers";
 import 'semantic-ui-css/semantic.min.css'
+import {Provider} from 'react-redux'
+import store from "../Store";
 
 function App() {
   const [players, setPlayers]=useState([])
@@ -60,14 +62,15 @@ function App() {
     setPlayers(players.map(player=> player.id === updatedPlayer.id ? updatedPlayer : player))
   }
 
-  
+  console.log(store.getState())
 
   return(
+    <Provider store={store}>
     <div class='background'>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/players" element={<PlayersContainer players={players} onDeletePlayer={handleDeletePlayer} />}></Route>
+        <Route path="/players" element={<PlayersContainer onDeletePlayer={handleDeletePlayer} />}></Route>
         <Route path="/coaches" element={<CoachesContainer coaches={coaches}/>}></Route>
         <Route path="/teams" element={<TeamsContainer teams={teams}/>}></Route>
         <Route path="/add" element={<Add 
@@ -82,6 +85,7 @@ function App() {
         <Route path='/teamplayers/:id' element={<ShowTeamPlayers teams={teams}/>}/>
       </Routes> 
     </div>
+    </Provider>
   );
 }
 

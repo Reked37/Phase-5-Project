@@ -11,7 +11,7 @@ function UpdatePlayer({players, onUpdatePlayer}){
     const initialValues={
         name:player.name,
         jersey_number: player.jersey_number,
-        team_name: player.team.name
+        // team_name: player.team.name
     }
     const onSubmit=values=>{
         fetch(`/players/${player.id}`,{
@@ -39,8 +39,8 @@ function UpdatePlayer({players, onUpdatePlayer}){
                     <Field type='text' id='name' name='name' className='field'></Field><br/>
                     <label className='label'> Jersey Number: </label>
                     <Field type='number' id='jersey_number' name='jersey_number' className='field'/><br/>
-                    <label className='label'> Team: </label>
-                    <Field type='text' id='team' name='team_name' className='field'/><br/><br/>
+                    {/* <label className='label'> Team: </label>
+                    <Field type='text' id='team' name='team_name' className='field'/><br/><br/> */}
                     <button type='submit' className='ui green button'> Submit </button>
                 </Form>
             </Formik><br/><br/>

@@ -9,7 +9,7 @@ from flask_restful import Resource
 # Local imports
 from config import app, db, api
 # Add your model imports
-from models import Player, Coach, Team, player_coach_association
+from models import Player, Coach, Team, player_coach_association, Match
 
 # Views go here!
 
@@ -49,8 +49,14 @@ class PlayerByID(Resource):
     def patch(self,id):
         player=Player.query.filter_by(id=id).first()
         json=request.get_json()
-        for attr in json:
-            setattr(player, attr, json[attr])
+        for attr, value in json.items():
+            if attr != "team":
+                setattr(player, attr, value)
+
+        if "team" in json:
+            team_data = json["team"]
+            for attr, value in team_data.items():
+                setattr(player.team, attr, value)
 
         db.session.add(player)
         db.session.commit()
@@ -93,6 +99,27 @@ class Teams(Resource):
         return response
 api.add_resource(Teams, '/teams')
 
+class TeamById(Resource):
+    def get(self, id):
+        team=Team.query.filter_by(id=id).first()
+        team_dict=team.to_dict()
+        return make_response(jsonify(team_dict), 200)
+    
+    def patch(get, id):
+        team=Team.query.filter_by(id=id).first()
+        json=request.get_json()
+        for attr in json:
+            setattr(team, attr, json[attr])
+    
+    def delete (self, id):
+        team=Team.query.filter_by(id=id).first()
+        db.session.delete(team)
+        db.session.commit()
+        response_body={'message': 'Team has been deleted'}
+        response=make_response(response_body, 200)
+        return response
+api.add_resource(TeamById, '/teams/<int:id>')
+
 class Coaches(Resource):
     def get(self):
         coaches=Coach.query.all()
@@ -115,6 +142,26 @@ class Coaches(Resource):
         response=make_response(jsonify(coach_dict), 201)
         return response
 api.add_resource(Coaches, '/coaches')
+
+class CoachById(Resource):
+    def get(self, id):
+        coach=Coach.query.filter_by(id=id).first()
+        coach_dict=coach.to_dict()
+        return make_response(jsonify(coach_dict), 200)
+    
+    def patch(get, id):
+        coach=Coach.query.filter_by(id=id).first()
+        json=request.get_json()
+        for attr in json:
+            setattr(coach, attr, json[attr])
+    
+    def delete (self, id):
+        coach=Coach.query.filter_by(id=id).first()
+        db.session.delete(coach)
+        db.session.commit()
+        response_body={'message': 'Coach has been deleted'}
+        return make_response(response_body, 200)
+api.add_resource(CoachById, '/coaches/<int:id>')
 
 class PlayersCoaches(Resource):
     def get(self, id):
@@ -151,6 +198,14 @@ class TeamCoaches(Resource):
         return make_response(jsonify(team_coaches__dict), 200)
 
 api.add_resource(TeamCoaches, '/teamcoaches/<int:id>')
+
+class Matches(Resource):
+    def get(self):
+        matches=Match.query.all()
+        matches_dict=[match.to_dict() for match in matches]
+        return make_response(jsonify(matches_dict), 200)
+
+api.add_resource(Matches, '/matches')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
