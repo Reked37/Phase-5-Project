@@ -19,8 +19,8 @@ function PlayersContainer({fetchPlayers, onDeletePlayer}){
 
     return (
         <div>
-            <h1 class='headers'>Players in the League</h1><br/>
-            <div class="ui grid container cards">{displayPlayers}</div>
+            <h1 className='headers'>Players in the League</h1><br/>
+            <div className="ui grid container cards">{displayPlayers}</div>
         </div>
     )}
 
@@ -34,6 +34,6 @@ function PlayersContainer({fetchPlayers, onDeletePlayer}){
         return{
             fetchPlayers:()=>dispatch(fetchPlayers())
         }
-    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps) (PlayersContainer) 

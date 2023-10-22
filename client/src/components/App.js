@@ -14,6 +14,7 @@ import ShowTeamPlayers from "./TeamPlayers";
 import 'semantic-ui-css/semantic.min.css'
 import {Provider} from 'react-redux'
 import store from "../Redux/Store";
+import MatchesContainer from "./MatchesContainer";
 
 function App() {
   
@@ -54,6 +55,7 @@ function App() {
         />}></Route>
         <Route path="/coaches" element={<CoachesContainer />}></Route>
         <Route path="/teams" element={<TeamsContainer />}></Route>
+        <Route path='/matches' element={<MatchesContainer />}></Route>
         <Route path="/add" element={<Add 
         // onPostPlayer={handlePostPlayer} 
         // onPostTeam={handlePostTeam}
