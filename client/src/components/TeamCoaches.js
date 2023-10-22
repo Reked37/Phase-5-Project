@@ -1,17 +1,19 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import Coach from './Coach'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
 
-function ShowTeamCoaches({teams}){
+function ShowTeamCoaches(){
     const [coaches, setCoaches]=useState([])
     const {id} = useParams()
+    const teams=useSelector(state=>state.teams.leagueTeams)
     const team=teams.find(team=>team.id === parseInt(id))
 
 
     useEffect(()=>{
-        fetch(`/teamcoaches/${team.id}`)
-        .then(res=>res.json())
-        .then(data=>setCoaches(data))
+        axios.get(`/teamcoaches/${team.id}`)
+        .then(res=>setCoaches(res.data))
     },[team.id])
     
     return (

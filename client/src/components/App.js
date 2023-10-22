@@ -17,25 +17,6 @@ import store from "../Redux/Store";
 import MatchesContainer from "./MatchesContainer";
 
 function App() {
-  
-  // function handlePostPlayer(newPlayer){
-  //   console.log('added a player to state')
-  //   setPlayers([...players,newPlayer])
-  // }
-
-  // function handlePostCoach(newCoach){
-  //   setCoaches([...coaches, newCoach])
-  // }
-
-  // function handlePostTeam(newTeam){
-  //   setTeams([...teams, newTeam])
-  // }
-
-  // function handleUpdate(updatedPlayer){
-  //   setPlayers(players.map(player=> player.id === updatedPlayer.id ? updatedPlayer : player))
-  // }
-
-  console.log(store.getState())
 
   return(
     <Provider store={store}>

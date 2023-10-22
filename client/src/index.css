@@ -126,3 +126,9 @@ body{
   align-items: center;
   justify-content: center;
 }
+
+.empty{
+  color:red;
+  text-align:center;
+  font-size:50px;
+}

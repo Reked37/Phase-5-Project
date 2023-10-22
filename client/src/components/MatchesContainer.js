@@ -18,7 +18,8 @@ function MatchesContainer({ fetchMatches }) {
     <div>
       <br/>
         <h1 className='headers'>League Matches</h1><br/>
-        <div className="ui grid container cards">{displayMatches}</div>
+        <div className="ui grid container cards">{displayMatches}</div><br/>
+        <img src='https://img.freepik.com/free-vector/realistic-american-football-stadium_52683-53798.jpg' alt='stadium' className='small-image'/>
     </div>
   )}
 
