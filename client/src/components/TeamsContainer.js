@@ -1,7 +1,15 @@
-import React from "react"
+import React, {useEffect} from "react"
 import Team from "./Team"
+import {useSelector, connect} from 'react-redux'
+import { fetchTeams } from "../Redux/teamAction"
 
-function TeamsContainer({teams}){
+function TeamsContainer({fetchTeams}){
+    useEffect(()=>{
+        fetchTeams()
+    },[fetchTeams])
+
+    const teams=useSelector(state=>state.teams.leagueTeams)
+
     const displayTeams=teams.map(team=>{
         return <Team passTeam={team} key={team.id}/>    
     })
@@ -15,4 +23,16 @@ function TeamsContainer({teams}){
         </div>
     )}
 
-export default TeamsContainer
+    const mapStateToProps= state =>{
+        return{
+            teams:state.teams
+        }
+    }
+
+    const mapDispatchToProps = dispatch =>{
+        return{
+            fetchTeams:()=>dispatch(fetchTeams())
+        }
+    }
+
+export default connect(mapStateToProps, mapDispatchToProps) (TeamsContainer)

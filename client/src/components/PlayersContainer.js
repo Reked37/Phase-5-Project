@@ -24,7 +24,6 @@ function PlayersContainer({fetchPlayers, onDeletePlayer}){
         </div>
     )}
 
-
     const mapStateToProps= state =>{
         return{
             players:state.players
@@ -36,4 +35,5 @@ function PlayersContainer({fetchPlayers, onDeletePlayer}){
             fetchPlayers:()=>dispatch(fetchPlayers())
         }
     }
+    
 export default connect(mapStateToProps, mapDispatchToProps) (PlayersContainer) 

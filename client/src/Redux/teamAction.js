@@ -1,37 +1,37 @@
 import { FETCH_DATA_FAILURE, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS } from "./Types";
 import axios from 'axios'
 
-export const fetchPlayersRequest =() =>{
+export const fetchTeamsRequest =() =>{
     return{
         type: FETCH_DATA_REQUEST
     }
 }
 
-export const fetchPlayersSuccess =(players) =>{
+export const fetchTeamsSuccess =(players) =>{
     return{
         type: FETCH_DATA_SUCCESS,
         payload: players
     }
 }
 
-export const fetchPlayersFailure =(error) =>{
+export const fetchTeamsFailure =(error) =>{
     return{
         type: FETCH_DATA_FAILURE,
         payload: error
     }
 }
 
-export const fetchPlayers= () =>{
+export const fetchTeams= () =>{
     return (dispatch)=>{
-        dispatch(fetchPlayersRequest)
-        axios.get('/players')
+        dispatch(fetchTeamsRequest)
+        axios.get('/teams')
         .then(response=>{
-            const players = response.data
-            dispatch(fetchPlayersSuccess(players))
+            const teams = response.data
+            dispatch(fetchTeamsSuccess(teams))
         })
         .catch(error=>{
             const errorMsg= error.message
-            dispatch(fetchPlayersFailure(errorMsg))
+            dispatch(fetchTeamsFailure(errorMsg))
         })
     }
 }
