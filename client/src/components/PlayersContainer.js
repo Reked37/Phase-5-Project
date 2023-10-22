@@ -9,9 +9,6 @@ function PlayersContainer({fetchPlayers, onDeletePlayer}){
     }, [fetchPlayers])
     
     const players = useSelector(state=>state.players.leaguePlayers)
-    
-    console.log(players)
-    console.log(useSelector(state=>state))
 
     const displayPlayers=players.map(player=>{
         return <Player passPlayer={player} key={player.id} passDeletePlayer={onDeletePlayer}/>    

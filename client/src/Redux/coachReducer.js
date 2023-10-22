@@ -1,4 +1,4 @@
-import { FETCH_COACHES_FAILURE, FETCH_COACHES_REQUEST, FETCH_COACHES_SUCCESS, POST_COACH } from "./Types"
+import { UPDATE_COACH, DELETE_COACH, FETCH_COACHES_FAILURE, FETCH_COACHES_REQUEST, FETCH_COACHES_SUCCESS, POST_COACH } from "./Types"
 
 const initialState={
     loading: false,
@@ -25,6 +25,21 @@ const coachReducer =(state=initialState, action)=>{
         case POST_COACH:return{
             ...state,
             leagueCoaches:[...state.leagueCoaches, action.payload]
+        }
+        case DELETE_COACH:return{
+            ...state,
+            leagueCoaches: state.leagueCoaches.filter((coach)=>{
+                return coach.id !== action.payload
+            })
+        }
+        case UPDATE_COACH:return{
+            ...state,
+            leagueCoaches: state.leagueCoaches.map(coach=>{
+                if(coach.id === action.payload){
+                    return action.payload
+                }
+            return coach}),
+            error:''
         }
         default: return state
     }

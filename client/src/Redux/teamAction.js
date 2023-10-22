@@ -1,4 +1,4 @@
-import { FETCH_TEAMS_FAILURE, FETCH_TEAMS_REQUEST, FETCH_TEAMS_SUCCESS, POST_TEAM } from "./Types";
+import { DELETE_TEAM, FETCH_TEAMS_FAILURE, FETCH_TEAMS_REQUEST, FETCH_TEAMS_SUCCESS, POST_TEAM } from "./Types";
 import axios from 'axios'
 
 export const fetchTeamsRequest =() =>{
@@ -27,6 +27,13 @@ export const postTeam=(newTeam)=>{
         payload:newTeam
     }
 }
+
+// export const deleteTeam=(teamId)=>{
+//     return{
+//         type:DELETE_TEAM,
+//         payload:teamId
+//     }
+// }
 
 export const fetchTeams= () =>{
     return (dispatch)=>{

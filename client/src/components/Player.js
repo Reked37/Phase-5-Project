@@ -24,8 +24,6 @@ function Player({passPlayer}){
         navigate(`/playerscoaches/${passPlayer.id}`)
     }
 
-    
-
     return(
         <div className="ui five wide column">
             <div className='ui-card'>

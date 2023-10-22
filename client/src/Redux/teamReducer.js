@@ -26,6 +26,12 @@ const teamReducer =(state=initialState, action)=>{
             ...state,
             leagueTeams:[...state.leagueTeams, action.payload]
         }
+        // case DELETE_TEAM:return{
+        //     ...state,
+        //     leagueTeams: state.leagueTeams.filter((team)=>{
+        //         return team.id !== action.payload
+        //     })
+        // }
         default: return state
     }
 }

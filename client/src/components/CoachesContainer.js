@@ -9,7 +9,7 @@ function CoachesContainer({fetchCoaches}){
     },[fetchCoaches])
     
     const coaches= useSelector(state=>state.coaches.leagueCoaches)
-    console.log(coaches)
+
     const displayCoaches=coaches.map(coach=>{
         return <Coach passCoach={coach} key={coach.id}/>    
     })

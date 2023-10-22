@@ -15,6 +15,7 @@ import 'semantic-ui-css/semantic.min.css'
 import {Provider} from 'react-redux'
 import store from "../Redux/Store";
 import MatchesContainer from "./MatchesContainer";
+import UpdateCoach from "./UpdateCoach";
 
 function App() {
 
@@ -24,24 +25,17 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/players" element={<PlayersContainer 
-        // onDeletePlayer={handleDeletePlayer} 
-        />}></Route>
+        <Route path="/players" element={<PlayersContainer />}></Route>
         <Route path="/coaches" element={<CoachesContainer />}></Route>
         <Route path="/teams" element={<TeamsContainer />}></Route>
         <Route path='/matches' element={<MatchesContainer />}></Route>
-        <Route path="/add" element={<Add 
-        // onPostPlayer={handlePostPlayer} 
-        // onPostTeam={handlePostTeam}
-        // onPostCoach={handlePostCoach}
-        />}></Route>
-        <Route path='/players/:id' element={<UpdatePlayer 
-        // onUpdatePlayer={handleUpdate}
-        />}></Route>
+        <Route path="/add" element={<Add />}></Route>
+        <Route path='/players/:id' element={<UpdatePlayer />}></Route>
         <Route path='/playerscoaches/:id' element={<ShowPlayersCoaches />}/>
         <Route path='/coachesplayers/:id' element={<ShowCoachesPlayers />}/>
         <Route path='/teamcoaches/:id' element={<ShowTeamCoaches />}/> 
         <Route path='/teamplayers/:id' element={<ShowTeamPlayers />}/>
+        <Route path='/coaches/:id' element={<UpdateCoach/>}/>
       </Routes> 
     </div>
     </Provider>

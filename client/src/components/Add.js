@@ -108,7 +108,7 @@ function Add({}){
                     <Field  type='number' id='jersey_number' name='jersey_number' className='field'></Field><br/>
                     <ErrorMessage className='error' name='jersey_number' component="div"/>
                     <label className='label'> Team: </label>
-                    <Field type='text'  id='team_name' name='team_name' className='field'></Field><br/>
+                    <Field type='text'  id='team_name' name='team_name' placeholder='Team must exist' className='field'></Field><br/>
                     <ErrorMessage className='error' name='team_name' component="div"/> <br/>
                     <button type='submit' className='ui green button'>Submit</button>
                 </Form>
@@ -141,7 +141,7 @@ function Add({}){
                     <Field  type='text' id='coaching_position' name='coaching_position' className='field'></Field><br/>
                     <ErrorMessage className='error' name='coaching_position' component="div"/>
                     <label className='label'> Team: </label>
-                    <Field  type='text' id='team_name' name='team_name' className='field'></Field><br/>
+                    <Field  type='text' id='team_name' name='team_name' placeholder='Team must exist' className='field'></Field><br/>
                     <ErrorMessage className='error' name='team_name' component="div"/><br/>
                     <button type='submit' className='ui green button'>Submit</button><br/><br/>
                 </Form>
