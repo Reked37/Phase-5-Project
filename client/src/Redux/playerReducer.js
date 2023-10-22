@@ -1,4 +1,4 @@
-import { UPDATE_PLAYER, DELETE_PLAYER, FETCH_PLAYERS_FAILURE, FETCH_PLAYERS_REQUEST, FETCH_PLAYERS_SUCCESS } from "./Types"
+import { POST_PLAYER, UPDATE_PLAYER, DELETE_PLAYER, FETCH_PLAYERS_FAILURE, FETCH_PLAYERS_REQUEST, FETCH_PLAYERS_SUCCESS } from "./Types"
 
 const initialState={
     loading: false,
@@ -36,6 +36,10 @@ const playerReducer =(state=initialState, action)=>{
                 }
             return player}),
             error:''
+        }
+        case POST_PLAYER: return{
+            ...state,
+            leaguePlayer: [...state.leaguePlayers, action.payload]
         }
         default: return state
     }

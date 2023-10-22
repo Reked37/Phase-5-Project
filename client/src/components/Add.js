@@ -2,8 +2,10 @@ import React from 'react'
 import {Formik, Field, ErrorMessage, Form} from 'formik'
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
+import axios from 'axios'
+import { postPlayer } from '../Redux/playerAction'
 
-function Add({onPostPlayer, onPostCoach, onPostTeam}){
+function Add({onPostCoach, onPostTeam}){
     const navigate=useNavigate()
     // Player
     const validationSchemaPlayer= Yup.object({
@@ -16,16 +18,23 @@ function Add({onPostPlayer, onPostCoach, onPostTeam}){
         jersey_number: '',
         team_name:''
     }
+    // const onSubmitPlayer= values=>{
+    //     fetch('/players',{
+    //         method:"POST",
+    //         headers:{'Content-Type': 'application/json'},
+    //         body: JSON.stringify(values)
+    //     })
+    //     .then(res =>res.json())
+    //     .then(data=>{onPostPlayer(data)
+    //     navigate('/players')})
+    // }
     const onSubmitPlayer= values=>{
-        fetch('/players',{
-            method:"POST",
-            headers:{'Content-Type': 'application/json'},
-            body: JSON.stringify(values)
-        })
-        .then(res =>res.json())
-        .then(data=>{onPostPlayer(data)
-        navigate('/players')})
+       axios.post('/players', values)
+        .then(res =>postPlayer(res.data))
+        .catch(error=>console.log(error))
+        navigate('/players')
     }
+    
     //Team
     const initialValuesTeam={
         name: "",
