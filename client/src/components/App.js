@@ -71,7 +71,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/players" element={<PlayersContainer onDeletePlayer={handleDeletePlayer} />}></Route>
-        <Route path="/coaches" element={<CoachesContainer coaches={coaches}/>}></Route>
+        <Route path="/coaches" element={<CoachesContainer />}></Route>
         <Route path="/teams" element={<TeamsContainer teams={teams}/>}></Route>
         <Route path="/add" element={<Add 
         onPostPlayer={handlePostPlayer} 

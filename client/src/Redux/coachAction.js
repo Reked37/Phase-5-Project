@@ -28,11 +28,11 @@ export const fetchCoaches= () =>{
         // axios.get('http://127.0.0.1:5555/players')
         .then(response=>{
             const coaches = response.data
-            dispatch(fetchPlayersSuccess(coaches))
+            dispatch(fetchCoachesSuccess(coaches))
         })
         .catch(error=>{
             const errorMsg= error.message
-            dispatch(fetchPlayersFailure(errorMsg))
+            dispatch(fetchCoachesFailure(errorMsg))
         })
     }
 }

@@ -14,12 +14,12 @@ const coachReducer =(state=initialState, action)=>{
         }
         case FETCH_DATA_SUCCESS: return{
             loading: false,
-            leaguePlayers: action.payload,
+            leagueCoaches: action.payload,
             error: ''
         } 
         case FETCH_DATA_FAILURE: return{
             loading: false,
-            leaguePlayers: [],
+            leagueCoaches: [],
             error: action.payload
         }
         default: return state

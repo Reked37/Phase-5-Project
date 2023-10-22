@@ -1,7 +1,15 @@
-import React from "react"
+import React, {useEffect} from "react"
 import Coach from "./Coach"
+import {useSelector, connect} from 'react-redux'
+import { fetchCoaches } from "../Redux/coachAction"
 
-function coachesContainer({coaches}){
+function CoachesContainer({fetchCoaches}){
+    useEffect(()=>{
+        fetchCoaches()
+    },[fetchCoaches])
+    
+    const coaches= useSelector(state=>state.coaches.leagueCoaches)
+    console.log(coaches)
     const displayCoaches=coaches.map(coach=>{
         return <Coach passCoach={coach} key={coach.id}/>    
     })
@@ -15,4 +23,15 @@ function coachesContainer({coaches}){
         </div>
     )}
 
-export default coachesContainer
+    const mapStateToProps= state=>{
+        return{
+            coaches:state.coaches
+        }
+    }
+
+    const mapDispatchToProps=dispatch=>{
+        return{
+            fetchCoaches:()=>dispatch(fetchCoaches())
+        }
+    }
+export default connect(mapStateToProps, mapDispatchToProps) (CoachesContainer)
