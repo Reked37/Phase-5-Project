@@ -9,9 +9,10 @@ function PlayersContainer({fetchPlayers, onDeletePlayer}){
     }, [fetchPlayers])
     
     const players = useSelector(state=>state.players.leaguePlayers)
-    // const dispatch = useDispatch()
     
     console.log(players)
+    console.log(useSelector(state=>state))
+
     const displayPlayers=players.map(player=>{
         return <Player passPlayer={player} key={player.id} passDeletePlayer={onDeletePlayer}/>    
     })
@@ -20,7 +21,6 @@ function PlayersContainer({fetchPlayers, onDeletePlayer}){
         <div>
             <h1 class='headers'>Players in the League</h1><br/>
             <div class="ui grid container cards">{displayPlayers}</div>
-            {/* {players.map(player=>(<Player passPlayer={player} key={player.id} passDeletePlayer={onDeletePlayer}/>))} */}
         </div>
     )}
 
@@ -35,5 +35,5 @@ function PlayersContainer({fetchPlayers, onDeletePlayer}){
             fetchPlayers:()=>dispatch(fetchPlayers())
         }
     }
-    
+
 export default connect(mapStateToProps, mapDispatchToProps) (PlayersContainer) 

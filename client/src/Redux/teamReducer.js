@@ -1,4 +1,4 @@
-import { FETCH_DATA_FAILURE, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS } from "./Types"
+import { FETCH_TEAMS_FAILURE, FETCH_TEAMS_REQUEST, FETCH_TEAMS_SUCCESS } from "./Types"
 
 const initialState={
     loading: false,
@@ -8,16 +8,16 @@ const initialState={
 
 const teamReducer =(state=initialState, action)=>{
     switch(action.type){
-        case FETCH_DATA_REQUEST: return{
+        case FETCH_TEAMS_REQUEST: return{
             ...state,
             loading: true
         }
-        case FETCH_DATA_SUCCESS: return{
+        case FETCH_TEAMS_SUCCESS: return{
             loading: false,
             leagueTeams: action.payload,
             error: ''
         } 
-        case FETCH_DATA_FAILURE: return{
+        case FETCH_TEAMS_FAILURE: return{
             loading: false,
             leagueTeams: [],
             error: action.payload

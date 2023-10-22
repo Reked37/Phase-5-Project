@@ -3,11 +3,12 @@ import playerReducer from './playerReducer'
 import thunk from 'redux-thunk'
 import coachReducer from './coachReducer'
 import teamReducer from './teamReducer'
+// import matchReducer from './matchReducer'
 
 const rootReducer=combineReducers({
     players: playerReducer,
     teams: teamReducer,
-    coaches:coachReducer
+    coaches:coachReducer,
 })
 
 const store =createStore(rootReducer, applyMiddleware(thunk) )

@@ -1,22 +1,22 @@
-import { FETCH_DATA_FAILURE, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS } from "./Types";
+import { FETCH_COACHES_FAILURE, FETCH_COACHES_REQUEST, FETCH_COACHES_SUCCESS } from "./Types";
 import axios from 'axios'
 
 export const fetchCoachesRequest =() =>{
     return{
-        type: FETCH_DATA_REQUEST
+        type: FETCH_COACHES_REQUEST
     }
 }
 
-export const fetchCoachesSuccess =(players) =>{
+export const fetchCoachesSuccess =(coaches) =>{
     return{
-        type: FETCH_DATA_SUCCESS,
-        payload: players
+        type: FETCH_COACHES_SUCCESS,
+        payload: coaches
     }
 }
 
 export const fetchCoachesFailure =(error) =>{
     return{
-        type: FETCH_DATA_FAILURE,
+        type: FETCH_COACHES_FAILURE,
         payload: error
     }
 }
@@ -25,7 +25,6 @@ export const fetchCoaches= () =>{
     return (dispatch)=>{
         dispatch(fetchCoachesRequest)
         axios.get('/coaches')
-        // axios.get('http://127.0.0.1:5555/players')
         .then(response=>{
             const coaches = response.data
             dispatch(fetchCoachesSuccess(coaches))

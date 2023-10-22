@@ -1,22 +1,22 @@
-import { FETCH_DATA_FAILURE, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS } from "./Types";
+import { FETCH_TEAMS_FAILURE, FETCH_TEAMS_REQUEST, FETCH_TEAMS_SUCCESS } from "./Types";
 import axios from 'axios'
 
 export const fetchTeamsRequest =() =>{
     return{
-        type: FETCH_DATA_REQUEST
+        type: FETCH_TEAMS_REQUEST
     }
 }
 
 export const fetchTeamsSuccess =(players) =>{
     return{
-        type: FETCH_DATA_SUCCESS,
+        type: FETCH_TEAMS_SUCCESS,
         payload: players
     }
 }
 
 export const fetchTeamsFailure =(error) =>{
     return{
-        type: FETCH_DATA_FAILURE,
+        type: FETCH_TEAMS_FAILURE,
         payload: error
     }
 }
