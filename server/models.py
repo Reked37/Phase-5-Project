@@ -75,7 +75,7 @@ class Match(db.Model, SerializerMixin):
     home_team = db.relationship('Team', foreign_keys=[home_team_id], back_populates='home_matches')
     away_team = db.relationship('Team', foreign_keys=[away_team_id], back_populates='away_matches')
 
-    serialize_rules = ('-home_team', '-away_team')
+    serialize_rules = ('-home_team.coaches', '-home_team.players','-away_team.players', '-away_team.coaches')
 
     def __repr__(self):
         return f'Match(id={self.id} date={self.date} location={self.location} home_team_id={self.home_team_id} away_team_id={self.away_team_id})'

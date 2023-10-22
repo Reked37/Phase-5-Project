@@ -16,7 +16,8 @@ function MatchesContainer({ fetchMatches }) {
 
   return (
     <div>
-        <h1 className='headers'>League Matches</h1>
+      <br/>
+        <h1 className='headers'>League Matches</h1><br/>
         <div className="ui grid container cards">{displayMatches}</div>
     </div>
   )}
