@@ -31,13 +31,6 @@ function App() {
   //   setTeams([...teams, newTeam])
   // }
 
-  // function handleDeletePlayer(deletePlayer){
-  //   console.log(deletePlayer)
-  //   const deletedPlayer=players.filter(player=>player.id !== deletePlayer.id)
-  //   console.log(deletedPlayer)
-  //   setPlayers(deletedPlayer)
-  // }
-
   // function handleUpdate(updatedPlayer){
   //   setPlayers(players.map(player=> player.id === updatedPlayer.id ? updatedPlayer : player))
   // }

@@ -1,4 +1,4 @@
-import { FETCH_PLAYERS_FAILURE, FETCH_PLAYERS_REQUEST, FETCH_PLAYERS_SUCCESS } from "./Types"
+import { UPDATE_PLAYER, DELETE_PLAYER, FETCH_PLAYERS_FAILURE, FETCH_PLAYERS_REQUEST, FETCH_PLAYERS_SUCCESS } from "./Types"
 
 const initialState={
     loading: false,
@@ -21,6 +21,15 @@ const playerReducer =(state=initialState, action)=>{
             loading: false,
             leaguePlayers: [],
             error: action.payload
+        }
+        case DELETE_PLAYER:return{
+            ...state,
+            leaguePlayers: state.leaguePlayers.filter((player)=>{
+                return player.id !==action.payload
+            })
+        }
+        case UPDATE_PLAYER:return{
+            
         }
         default: return state
     }
