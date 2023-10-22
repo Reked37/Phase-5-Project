@@ -1,4 +1,4 @@
-import { FETCH_PLAYERS_FAILURE, FETCH_PLAYERS_REQUEST, FETCH_PLAYERS_SUCCESS, DELETE_PLAYER } from "./Types";
+import { FETCH_PLAYERS_FAILURE, FETCH_PLAYERS_REQUEST, FETCH_PLAYERS_SUCCESS, DELETE_PLAYER, UPDATE_PLAYER } from "./Types";
 import axios from 'axios'
 
 export const fetchPlayersRequest =() =>{
@@ -25,6 +25,13 @@ export const deletePlayer = (playerId)=>{
     return{
         type: DELETE_PLAYER,
         payload: playerId
+    }
+}
+
+export const updatePlayer=(playerId)=>{
+    return{
+        type: UPDATE_PLAYER,
+        payload:playerId
     }
 }
 

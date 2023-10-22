@@ -29,7 +29,13 @@ const playerReducer =(state=initialState, action)=>{
             })
         }
         case UPDATE_PLAYER:return{
-            
+            ...state,
+            leaguePlayers: state.leaguePlayers.map(player=>{
+                if(player.id === action.payload.id){
+                    return action.payload
+                }
+            return player}),
+            error:''
         }
         default: return state
     }

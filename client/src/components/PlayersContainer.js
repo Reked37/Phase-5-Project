@@ -34,6 +34,6 @@ function PlayersContainer({fetchPlayers, onDeletePlayer}){
         return{
             fetchPlayers:()=>dispatch(fetchPlayers())
         }
-}
+    }
 
 export default connect(mapStateToProps, mapDispatchToProps) (PlayersContainer) 

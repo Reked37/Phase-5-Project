@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Formik, Form, Field} from 'formik'
 import { useParams } from 'react-router-dom' 
 import { useNavigate } from 'react-router-dom' 
+import { updatePlayer } from '../Redux/playerAction'
+import { useSelector, connect } from 'react-redux'
+import axios from 'axios'
 
-function UpdatePlayer({players, onUpdatePlayer}){
+function UpdatePlayer({updatePlayer}){
+    const players= useSelector(state=>state.players.leaguePlayers)
     const {id}=useParams()
     const player = players.find(player=> player.id === parseInt(id))
     const navigate=useNavigate()
@@ -13,18 +17,12 @@ function UpdatePlayer({players, onUpdatePlayer}){
         jersey_number: player.jersey_number,
         // team_name: player.team.name
     }
+ 
     const onSubmit=values=>{
-        fetch(`/players/${player.id}`,{
-            method: 'PATCH',
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(values)
-        })
-        .then(res=>res.json())
-        .then(data=>onUpdatePlayer(data))
+        axios.patch(`/players/${player.id}`, values)
+        .then(res=>updatePlayer(res.data))
+        .catch(error=>console.log("Couldn't update player", error))
         navigate('/players')
-
     }
  
     return(
@@ -47,7 +45,12 @@ function UpdatePlayer({players, onUpdatePlayer}){
             <img src='https://www.sharpfootballanalysis.com/wp-content/uploads/2023/02/Super-Bowl-57-preview-scaled.jpg'
             className='small-image' alt='quarterback'/>
         </div>
-    )
-}
+    )}
 
-export default UpdatePlayer
+    const mapDispatchToProps = dispatch =>{
+        return{
+            updatePlayer:(id, playerData)=>dispatch(updatePlayer(id, playerData))
+        }
+    }
+
+export default connect(null, mapDispatchToProps) (UpdatePlayer)
