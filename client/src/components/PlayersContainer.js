@@ -8,7 +8,7 @@ function PlayersContainer({fetchPlayers, onDeletePlayer}){
         fetchPlayers()
     }, [fetchPlayers])
     
-    const players = useSelector(state=>state.players.players)
+    const players = useSelector(state=>state.players.leaguePlayers)
     // const dispatch = useDispatch()
     
     console.log(players)

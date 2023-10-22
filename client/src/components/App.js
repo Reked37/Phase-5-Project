@@ -13,7 +13,7 @@ import ShowTeamCoaches from "./TeamCoaches";
 import ShowTeamPlayers from "./TeamPlayers";
 import 'semantic-ui-css/semantic.min.css'
 import {Provider} from 'react-redux'
-import store from "../Store";
+import store from "../Redux/Store";
 
 function App() {
   const [players, setPlayers]=useState([])

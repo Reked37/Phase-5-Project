@@ -2,11 +2,11 @@ import { FETCH_DATA_FAILURE, FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS } from "./Ty
 
 const initialState={
     loading: false,
-    leaguePlayers: [],
+    leagueCoaches: [],
     error:''
 }
 
-const playerReducer =(state=initialState, action)=>{
+const coachReducer =(state=initialState, action)=>{
     switch(action.type){
         case FETCH_DATA_REQUEST: return{
             ...state,
@@ -26,4 +26,4 @@ const playerReducer =(state=initialState, action)=>{
     }
 }
 
-export default playerReducer
+export default coachReducer
