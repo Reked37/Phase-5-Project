@@ -1,4 +1,4 @@
-import { FETCH_COACHES_FAILURE, FETCH_COACHES_REQUEST, FETCH_COACHES_SUCCESS } from "./Types"
+import { FETCH_COACHES_FAILURE, FETCH_COACHES_REQUEST, FETCH_COACHES_SUCCESS, POST_COACH } from "./Types"
 
 const initialState={
     loading: false,
@@ -21,6 +21,10 @@ const coachReducer =(state=initialState, action)=>{
             loading: false,
             leagueCoaches: [],
             error: action.payload
+        }
+        case POST_COACH:return{
+            ...state,
+            leagueCoaches:[...state.leagueCoaches, action.payload]
         }
         default: return state
     }

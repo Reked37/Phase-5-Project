@@ -4,8 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import axios from 'axios'
 import { postPlayer } from '../Redux/playerAction'
+import { postTeam } from '../Redux/teamAction'
+import { postCoach } from '../Redux/coachAction'
+import { postMatch } from '../Redux/matchAction'
 
-function Add({onPostCoach, onPostTeam}){
+function Add({}){
     const navigate=useNavigate()
     // Player
     const validationSchemaPlayer= Yup.object({
@@ -18,21 +21,14 @@ function Add({onPostCoach, onPostTeam}){
         jersey_number: '',
         team_name:''
     }
-    // const onSubmitPlayer= values=>{
-    //     fetch('/players',{
-    //         method:"POST",
-    //         headers:{'Content-Type': 'application/json'},
-    //         body: JSON.stringify(values)
-    //     })
-    //     .then(res =>res.json())
-    //     .then(data=>{onPostPlayer(data)
-    //     navigate('/players')})
-    // }
+   
     const onSubmitPlayer= values=>{
        axios.post('/players', values)
-        .then(res =>postPlayer(res.data))
+        .then(res =>{
+            postPlayer(res.data)
+            return navigate('/players')})
         .catch(error=>console.log(error))
-        navigate('/players')
+        
     }
     
     //Team
@@ -40,16 +36,16 @@ function Add({onPostCoach, onPostTeam}){
         name: "",
         mascot: ''
     }
-    const onSubmitTeam=values =>{
-        fetch('/teams',{
-            method:"POST",
-            headers:{'Content-Type': 'application/json'},
-            body: JSON.stringify(values)
-        })
-        .then(res =>res.json())
-        .then(data=>{onPostTeam(data)
-        navigate('/teams')})
+
+    const onSubmitTeam= values=>{
+        axios.post('/teams', values)
+         .then(res =>{
+            postTeam(res.data)
+            return navigate('/teams')})
+         .catch(error=>console.log(error))
+         
     }
+
     const validationSchemaTeam= Yup.object({
         name: Yup.string().required('Required'),
         mascot: Yup.string().required('Required')
@@ -66,15 +62,35 @@ function Add({onPostCoach, onPostTeam}){
         coaching_position: "",
         team_name:""
     }
-    const onSubmitCoach=values=>{
-        fetch('/coaches',{
-            method:"POST",
-            headers:{'Content-Type': 'application/json'},
-            body: JSON.stringify(values)
+
+    const onSubmitCoach= values=>{
+        axios.post('/coaches', values)
+         .then(res =>{
+            postCoach(res.data); 
+            return navigate('/coaches')})
+         .catch(error=>console.log(error))
+    }
+
+    //Match
+    const validationSchemaMatch=Yup.object({
+        home_team: Yup.string().required('Required'),
+        away_team:Yup.string().required('Required'),
+        location:Yup.string().required('Required'),
+        date:Yup.date().required('Required')
+    })
+    const initialValuesMatch={
+        home_team:"",
+        away_team:"",
+        location:"",
+        date:"",
+    }
+    const onSubmitMatch=values=>{
+        axios.post('/matches', values)
+        .then(res=>{
+            postMatch(res.data);
+            return navigate('/matches')
         })
-        .then(res =>res.json())
-        .then(data=>{onPostCoach(data)
-        navigate('/coaches')})
+        .catch(error=>console.log(error))
     }
 
     return(
@@ -127,6 +143,27 @@ function Add({onPostCoach, onPostTeam}){
                     <label className='label'> Team: </label>
                     <Field  type='text' id='team_name' name='team_name' className='field'></Field><br/>
                     <ErrorMessage className='error' name='team_name' component="div"/><br/>
+                    <button type='submit' className='ui green button'>Submit</button><br/><br/>
+                </Form>
+            </Formik>
+            <Formik
+                initialValues={initialValuesMatch}
+                validationSchema={validationSchemaMatch}
+                onSubmit={onSubmitMatch}>
+                <Form className='form'>
+                    <h1 className='headers'>Add Match</h1>
+                    <label className='label'>Home Team: </label>
+                    <Field type='text' id='home_team' name='home_team' className='field'></Field><br/>
+                    <ErrorMessage className='error' name='home_team' component='div'/>
+                    <label className='label'>Away Team: </label>
+                    <Field type='text' id='away_team' name='away_team' className='field'></Field><br/>
+                    <ErrorMessage className='error' name='away_team' component='div'/>
+                    <label className='label'>Location: </label>
+                    <Field type='text' id='location' name='location' className='field'></Field><br/>
+                    <ErrorMessage className='error' name='location' component='div'/>
+                    <label className='label'>Date: </label>
+                    <Field type='text' id='date' name='date' className='field' placeholder='Year-Month-Day'></Field><br/>
+                    <ErrorMessage className='error' name='date' component='div'/>
                     <button type='submit' className='ui green button'>Submit</button><br/><br/>
                 </Form>
             </Formik>

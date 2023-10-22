@@ -1,4 +1,4 @@
-import { FETCH_MATCHES_FAILURE, FETCH_MATCHES_REQUEST, FETCH_MATCHES_SUCCESS } from "./Types";
+import { FETCH_MATCHES_FAILURE, FETCH_MATCHES_REQUEST, FETCH_MATCHES_SUCCESS, POST_MATCH } from "./Types";
 import axios from 'axios'
 
 export const fetchMatchesRequest =() =>{
@@ -18,6 +18,13 @@ export const fetchMatchesFailure =(error) =>{
     return{
         type: FETCH_MATCHES_FAILURE,
         payload: error
+    }
+}
+
+export const postMatch=(newMatch)=>{
+    return{
+        type:POST_MATCH,
+        payload:newMatch
     }
 }
 

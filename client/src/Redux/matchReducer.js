@@ -1,4 +1,4 @@
-import { FETCH_MATCHES_FAILURE, FETCH_MATCHES_REQUEST, FETCH_MATCHES_SUCCESS } from "./Types"
+import { FETCH_MATCHES_FAILURE, FETCH_MATCHES_REQUEST, FETCH_MATCHES_SUCCESS, POST_MATCH } from "./Types"
 
 const initialState={
     loading: false,
@@ -21,6 +21,10 @@ const matchReducer =(state=initialState, action)=>{
             loading: false,
             leagueMatches: [],
             error: action.payload
+        }
+        case POST_MATCH:return{
+            ...state,
+            leagueMatches: [...state.leagueMatches, action.payload]
         }
         default: return state
     }

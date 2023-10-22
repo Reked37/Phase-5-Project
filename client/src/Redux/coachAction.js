@@ -1,4 +1,4 @@
-import { FETCH_COACHES_FAILURE, FETCH_COACHES_REQUEST, FETCH_COACHES_SUCCESS } from "./Types";
+import { FETCH_COACHES_FAILURE, FETCH_COACHES_REQUEST, FETCH_COACHES_SUCCESS, POST_COACH } from "./Types";
 import axios from 'axios'
 
 export const fetchCoachesRequest =() =>{
@@ -18,6 +18,13 @@ export const fetchCoachesFailure =(error) =>{
     return{
         type: FETCH_COACHES_FAILURE,
         payload: error
+    }
+}
+
+export const postCoach=(newCoach)=>{
+    return{
+        type:POST_COACH,
+        payload:newCoach
     }
 }
 

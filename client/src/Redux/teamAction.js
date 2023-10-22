@@ -1,4 +1,4 @@
-import { FETCH_TEAMS_FAILURE, FETCH_TEAMS_REQUEST, FETCH_TEAMS_SUCCESS } from "./Types";
+import { FETCH_TEAMS_FAILURE, FETCH_TEAMS_REQUEST, FETCH_TEAMS_SUCCESS, POST_TEAM } from "./Types";
 import axios from 'axios'
 
 export const fetchTeamsRequest =() =>{
@@ -18,6 +18,13 @@ export const fetchTeamsFailure =(error) =>{
     return{
         type: FETCH_TEAMS_FAILURE,
         payload: error
+    }
+}
+
+export const postTeam=(newTeam)=>{
+    return{
+        type:POST_TEAM,
+        payload:newTeam
     }
 }
 

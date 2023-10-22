@@ -1,4 +1,4 @@
-import { FETCH_TEAMS_FAILURE, FETCH_TEAMS_REQUEST, FETCH_TEAMS_SUCCESS } from "./Types"
+import { FETCH_TEAMS_FAILURE, FETCH_TEAMS_REQUEST, FETCH_TEAMS_SUCCESS, POST_TEAM } from "./Types"
 
 const initialState={
     loading: false,
@@ -21,6 +21,10 @@ const teamReducer =(state=initialState, action)=>{
             loading: false,
             leagueTeams: [],
             error: action.payload
+        }
+        case POST_TEAM:return{
+            ...state,
+            leagueTeams:[...state.leagueTeams, action.payload]
         }
         default: return state
     }

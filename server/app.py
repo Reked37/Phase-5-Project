@@ -205,6 +205,22 @@ class Matches(Resource):
         matches_dict=[match.to_dict() for match in matches]
         return make_response(jsonify(matches_dict), 200)
 
+    def post (self):
+        json=request.get_json()
+        home_team_exist=Team.query.filter_by(name=json['home_team']).first()
+        away_team_exist=Team.query.filter_by(name=json['away_team']).first()
+
+        new_match=Match(
+            home_team_id=home_team_exist.id,
+            away_team_id=away_team_exist.id,
+            location=json['location'],
+            date=json['date']
+        )
+        db.session.add(new_match)
+        db.session.commit()
+        match_dict=new_match.to_dict()
+        return make_response(jsonify(match_dict), 201)
+
 api.add_resource(Matches, '/matches')
 
 if __name__ == '__main__':
