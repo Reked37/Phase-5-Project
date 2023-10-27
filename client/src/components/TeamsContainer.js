@@ -15,7 +15,7 @@ function TeamsContainer({fetchTeams}){
     })
 
     return (
-        <div>
+        <div><br/>
             <h1 class='headers'> Teams in the League</h1><br/>
             <div class='ui grid container'>{displayTeams}</div><br/>
             <img className='small-image' alt='team' src='https://static.www.nfl.com/image/private/t_editorial_landscape_12_desktop/league/fjptmdctzkinv6jaon59'/>

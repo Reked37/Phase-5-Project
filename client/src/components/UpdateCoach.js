@@ -12,7 +12,6 @@ function UpdateCoach(){
     const coach = coaches.find(coach=> coach.id === parseInt(id))
     const navigate=useNavigate()
     const dispatch=useDispatch()
-    console.log(coach)
 
     const initialValues={
         name:coach.name,

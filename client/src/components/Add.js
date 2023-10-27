@@ -8,7 +8,7 @@ import { postTeam } from '../Redux/teamAction'
 import { postCoach } from '../Redux/coachAction'
 import { postMatch } from '../Redux/matchAction'
 
-function Add({}){
+function Add(){
     const navigate=useNavigate()
     // Player
     const validationSchemaPlayer= Yup.object({
@@ -102,13 +102,13 @@ function Add({}){
                 <Form className='form'><br/>
                     <h1 className='headers'>Add Player</h1>
                     <label className='label'> Name: </label>
-                    <Field type='text' id='name' name='name' className='field'></Field><br/>
+                    <Field type='text' id='name' name='name' className='field' placeholder='Add Name'></Field><br/>
                     <ErrorMessage className='error' name='name' component="div"/>
                     <label className='label'> Jersey Number: </label>
-                    <Field  type='number' id='jersey_number' name='jersey_number' className='field'></Field><br/>
+                    <Field  type='number' id='jersey_number' name='jersey_number' className='field' placeholder='Add Jersey Number'></Field><br/>
                     <ErrorMessage className='error' name='jersey_number' component="div"/>
                     <label className='label'> Team: </label>
-                    <Field type='text'  id='team_name' name='team_name' placeholder='Team must exist' className='field'></Field><br/>
+                    <Field type='text'  id='team_name' name='team_name' placeholder='Team Must Exist' className='field'></Field><br/>
                     <ErrorMessage className='error' name='team_name' component="div"/> <br/>
                     <button type='submit' className='ui green button'>Submit</button>
                 </Form>
@@ -120,10 +120,10 @@ function Add({}){
                 <Form className='form'><br/>
                     <h1 className='headers'>Add Team</h1>
                     <label className='label'> Name: </label>
-                    <Field name='name' id='name' className='field'></Field><br/>
+                    <Field name='name' id='name' className='field' placeholder='Add Name'></Field><br/>
                     <ErrorMessage className='error' name='name' component="div"/>
                     <label className='label'> Mascot: </label>
-                    <Field  id='mascot' name='mascot' className='field' ></Field><br/>
+                    <Field  id='mascot' name='mascot' className='field' placeholder='Add Mascot'></Field><br/>
                     <ErrorMessage className='error' name='mascot' component="div"/> <br/>
                     <button type='submit' className='ui green button'> Submit </button>
                 </Form>
@@ -135,10 +135,10 @@ function Add({}){
                 <Form className='form'><br/>
                     <h1 className='headers'>Add Coach</h1>
                     <label className='label'> Name: </label>
-                    <Field  type='text' id='name' name='name' className='field'></Field><br/>
+                    <Field  type='text' id='name' name='name' className='field' placeholder='Add Name'></Field><br/>
                     <ErrorMessage className='error' name='name' component="div"/>
                     <label className='label'> Coaching Position: </label>
-                    <Field  type='text' id='coaching_position' name='coaching_position' className='field'></Field><br/>
+                    <Field  type='text' id='coaching_position' name='coaching_position' className='field' placeholder='Add Coacing Position'></Field><br/>
                     <ErrorMessage className='error' name='coaching_position' component="div"/>
                     <label className='label'> Team: </label>
                     <Field  type='text' id='team_name' name='team_name' placeholder='Team must exist' className='field'></Field><br/>
@@ -153,13 +153,13 @@ function Add({}){
                 <Form className='form'>
                     <h1 className='headers'>Add Match</h1>
                     <label className='label'>Home Team: </label>
-                    <Field type='text' id='home_team' name='home_team' className='field'></Field><br/>
+                    <Field type='text' id='home_team' name='home_team' className='field' placeholder='Add Home Team'></Field><br/>
                     <ErrorMessage className='error' name='home_team' component='div'/>
                     <label className='label'>Away Team: </label>
-                    <Field type='text' id='away_team' name='away_team' className='field'></Field><br/>
+                    <Field type='text' id='away_team' name='away_team' className='field' placeholder='Add Away Team'></Field><br/>
                     <ErrorMessage className='error' name='away_team' component='div'/>
                     <label className='label'>Location: </label>
-                    <Field type='text' id='location' name='location' className='field'></Field><br/>
+                    <Field type='text' id='location' name='location' className='field' placeholder='Add Location'></Field><br/>
                     <ErrorMessage className='error' name='location' component='div'/>
                     <label className='label'>Date: </label>
                     <Field type='text' id='date' name='date' className='field' placeholder='Year-Month-Day'></Field><br/>

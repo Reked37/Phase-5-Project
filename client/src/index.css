@@ -132,3 +132,15 @@ body{
   text-align:center;
   font-size:50px;
 }
+
+.hometeam{
+  color:blue;
+  font-size: 22px;
+  text-align: center;
+}
+
+.awayteam{
+  color:rgba(51, 152, 170, 0.973);
+  font-size: 22px;
+  text-align: center;
+}

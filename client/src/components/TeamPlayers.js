@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
-import Player from './Player'
+import PlayerCard from './PlayerCard'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 
@@ -20,8 +20,9 @@ function ShowTeamPlayers(){
         <div>
             <br/><h2 className='headers'>{team.name}'s Players</h2>
             <div className='ui grid container cards'>
-            {players.map(player=><Player passPlayer={player}/>)}
+            {players.map(player=><PlayerCard passPlayer={player} key={player.id}/>)}
             </div>
+            <img src='https://media.cnn.com/api/v1/images/stellar/prod/230303112454-01-nfl-review-gripes.jpg?c=16x9&q=h_720,w_1280,c_fill' alt='teamphoto' className='small-image' />
         </div>
     )
 }

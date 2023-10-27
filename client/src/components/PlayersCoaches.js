@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
-import Coach from './Coach'
+import CoachCard from './CoachCard'
 import {useSelector} from 'react-redux'
 import axios from 'axios'
 
@@ -19,8 +19,9 @@ function ShowPlayersCoaches(){
         <div>
             <br/><h2 className='headers'>{player.name}'s Coaches</h2>
             <div className='ui grid container cards'>
-            {coaches.map(coach=><Coach key={coach.name} passCoach={coach}/>)}
-            </div>
+            {coaches.map(coach=><CoachCard key={coach.name} passCoach={coach}/>)}
+            </div><br/>
+            <img src='https://globalsportmatters.com/wp-content/uploads/2019/12/Lamar-Jackson.jpg' alt='lamar and coach' className='small-image' />
         </div>
     )
 }
