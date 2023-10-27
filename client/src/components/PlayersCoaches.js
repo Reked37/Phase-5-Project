@@ -17,10 +17,10 @@ function ShowPlayersCoaches(){
     
     return (
         <div>
-            <br/><h2 className='headers'>{player.name}'s Coaches</h2>
+            <br/><h2 className='headers'>{player.name}'s Coaches</h2><br/>
             <div className='ui grid container cards'>
-            {coaches.map(coach=><CoachCard key={coach.name} passCoach={coach}/>)}
-            </div><br/>
+            {coaches.length ? coaches.map(coach=><CoachCard key={coach.name} passCoach={coach}/>):<div className='empty'>No Coaches</div>}
+            </div><br/><br/>
             <img src='https://globalsportmatters.com/wp-content/uploads/2019/12/Lamar-Jackson.jpg' alt='lamar and coach' className='small-image' />
         </div>
     )

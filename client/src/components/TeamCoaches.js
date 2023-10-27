@@ -18,10 +18,10 @@ function ShowTeamCoaches(){
     
     return (
         <div>
-            <br/><h2 className='headers'>{team.name}'s Coaches</h2>
+            <br/><h2 className='headers'>{team.name}'s Coaches</h2><br/>
             <div className='ui grid container cards'>
-            {coaches.map(coach=><CoachCard key={coach.name} passCoach={coach}/>)}
-            </div><br/>
+            {coaches.length ? coaches.map(coach=><CoachCard key={coach.name} passCoach={coach}/>):<div className='empty'>No Coaches</div>}
+            </div><br/><br/>
             <img src='https://cdn.vox-cdn.com/thumbor/3EcQ01Cl9eSzMdthMqdqkkkJsPs=/0x0:1920x1080/1200x800/filters:focal(804x364:1110x670)/cdn.vox-cdn.com/uploads/chorus_image/image/70483587/pjimage__3_.5.jpg' alt='teamcoaches' className='small-image'/>
         </div>
     )

@@ -12,6 +12,6 @@ const rootReducer=combineReducers({
     matches: matchReducer
 })
 
-const store =createStore(rootReducer, applyMiddleware(thunk) )
+const store =createStore(rootReducer, applyMiddleware(thunk))
 
 export default store
