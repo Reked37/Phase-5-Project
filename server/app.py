@@ -39,7 +39,7 @@ from flask import request, jsonify, make_response
 from flask_restful import Resource
 
 # Local imports
-from config import app, db, api
+# from config import app, db, api
 # Add your model imports
 from models import Player, Coach, Team, player_coach_association, Match
 
